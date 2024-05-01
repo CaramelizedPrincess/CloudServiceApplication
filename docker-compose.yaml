@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  cloudserviceapp:
+    image: diplom
+    container_name: diplom-server
+    build: ./
+    ports:
+      - "5050:5050"
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+
+
+
